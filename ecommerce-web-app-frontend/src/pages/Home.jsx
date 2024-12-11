@@ -1,6 +1,7 @@
 import { Card, Rating, Tabs, TextInput } from "flowbite-react";
 import Filter from "../components/Filter";
 import Category from "../components/Category";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -29,12 +30,12 @@ function Home() {
                     className="w-full h-auto rounded-t-lg"
                   />
                   <div className="p-4">
-                    <a href="#">
+                    <Link to="/product-view">
                       <p className="text-xs md:text-lg font-semibold tracking-tight text-gray-900 dark:text-white">
                         Apple Watch Series 7 GPS, Aluminium Case, Starlight
                         Sport
                       </p>
-                    </a>
+                    </Link>
                     <div className="mb-5 mt-2.5 flex items-center">
                       <Rating>
                         <Rating.Star />
