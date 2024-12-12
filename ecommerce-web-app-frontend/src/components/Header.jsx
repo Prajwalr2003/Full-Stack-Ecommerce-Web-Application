@@ -70,10 +70,18 @@ function Header() {
                 prajwalrangari@gmail.com
               </span>
             </Dropdown.Header>
-            <Dropdown.Item>Profile</Dropdown.Item>
-            <Dropdown.Item>Cart</Dropdown.Item>
-            <Dropdown.Item>Orders</Dropdown.Item>
-            <Dropdown.Item>Wishlist</Dropdown.Item>
+            <Link to="/profile">
+              <Dropdown.Item>Profile</Dropdown.Item>
+            </Link>
+            <Link to="/cart">
+              <Dropdown.Item>Cart</Dropdown.Item>
+            </Link>
+            <Link to="/orders">
+              <Dropdown.Item>Orders</Dropdown.Item>
+            </Link>
+            <Link to="/wishlist">
+              <Dropdown.Item>Wishlist</Dropdown.Item>
+            </Link>
             <Dropdown.Divider />
             <Dropdown.Item>Sign out</Dropdown.Item>
           </Dropdown>
