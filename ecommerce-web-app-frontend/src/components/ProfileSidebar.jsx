@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const ProfileSidebar = () => {
   return (
     <div>
-      <Sidebar aria-label="Profile Sidebar" className="w-full lg:w-auto">
+      <Sidebar aria-label="Profile Sidebar" className="lg:min-h-screen">
         <Sidebar.Items className="lg:pt-10">
           <Sidebar.ItemGroup>
             <Link to="/profile">
