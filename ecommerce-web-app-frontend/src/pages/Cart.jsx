@@ -6,9 +6,9 @@ const Cart = () => {
       <h2 className="text-center pt-28 text-3xl text-gray-500 font-bold mb-8">
         Cart
       </h2>
-      <div className="flex flex-wrap justify-center gap-4 px-2">
+      <div className="flex flex-wrap justify-center gap-10 px-2">
         <div>
-          <div className="flex flex-wrap justify-center p-4 border rounded-lg mb-6">
+          <div className="flex flex-wrap justify-center p-4 border-b border-blue-400 rounded-lg mb-6">
             <div className="">
               <img
                 src="../../temp/shirt.jpg"

@@ -17,7 +17,7 @@ const Profile = () => {
             </Button>
           </div>
           <div>
-            <h5 className="text-xl p-2">Personal Information</h5>
+            <h5 className="text-xl py-2 px-3 lg:px-0 font-bold">Name</h5>
             <div className="flex flex-wrap justify-center items-center mt-4">
               <TextInput
                 id="firstname"
@@ -37,7 +37,7 @@ const Profile = () => {
               />
             </div>
             <div className="p-3 lg:p-0">
-              <h5 className="text-xl mt-8">Gender</h5>
+              <h5 className="text-xl mt-8 font-bold">Gender</h5>
               <div className="flex gap-6 mt-3">
                 <div className="flex items-center gap-2">
                   <input type="radio" checked />
@@ -50,7 +50,7 @@ const Profile = () => {
               </div>
             </div>
             <div className="p-3 lg:p-0">
-              <h5 className="text-xl mt-8">Email Address</h5>
+              <h5 className="text-xl mt-8 font-bold">Email Address</h5>
               <TextInput
                 id="email"
                 placeholder="youremail@email.com"
@@ -61,7 +61,7 @@ const Profile = () => {
               />
             </div>
             <div className="p-3 lg:p-0">
-              <h5 className="text-xl mt-8">Mobile Number</h5>
+              <h5 className="text-xl mt-8 font-bold">Mobile Number</h5>
               <TextInput
                 id="phone"
                 placeholder="+1234567890"
