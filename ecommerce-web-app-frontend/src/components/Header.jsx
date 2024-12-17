@@ -3,7 +3,7 @@ import { Avatar, Dropdown, Navbar, Tabs } from "flowbite-react";
 import { IoCartOutline } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa";
 import { MdLogin, MdDarkMode, MdOutlineLightMode } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
   const [theme, setTheme] = useState(() => {
@@ -21,23 +21,29 @@ function Header() {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
+  const navigate = useNavigate();
+  const handleNavigation = (link) => {
+    navigate(link);
+  };
+
   return (
     <>
       <Navbar className="fixed w-full top-0 left-0 z-50 p-4 shadow-lg">
-        <Link to="/home">
-          <Navbar.Brand>
-            <img
-              src="../../temp/logo.png"
-              className="mr-3 h-6 sm:h-9"
-              alt="E-COMMERCE Logo"
-            />
-            <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-              E-COMMERCE
-            </span>
-          </Navbar.Brand>
-        </Link>
+        <Navbar.Brand
+          onClick={() => handleNavigation("/home")}
+          className="cursor-pointer"
+        >
+          <img
+            src="../../temp/logo.png"
+            className="mr-3 h-6 sm:h-9"
+            alt="E-COMMERCE Logo"
+          />
+          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+            E-COMMERCE
+          </span>
+        </Navbar.Brand>
         <div className="flex md:order-2">
-          <div className="mt-2 mr-5">
+          <div className="mt-2 mr-5 cursor-pointer">
             {/* Theme Toggle */}
             {theme === "light" ? (
               <MdDarkMode
@@ -63,6 +69,7 @@ function Header() {
                 rounded
               />
             }
+            className="cursor-pointer"
           >
             <Dropdown.Header>
               <span className="block text-sm">Prajwal Rangari</span>
@@ -70,45 +77,54 @@ function Header() {
                 prajwalrangari@gmail.com
               </span>
             </Dropdown.Header>
-            <Link to="/profile">
-              <Dropdown.Item>Profile</Dropdown.Item>
-            </Link>
-            <Link to="/cart">
-              <Dropdown.Item>Cart</Dropdown.Item>
-            </Link>
-            <Link to="/orders">
-              <Dropdown.Item>Orders</Dropdown.Item>
-            </Link>
-            <Link to="/wishlist">
-              <Dropdown.Item>Wishlist</Dropdown.Item>
-            </Link>
+            <Dropdown.Item onClick={() => handleNavigation("/profile")}>
+              Profile
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => handleNavigation("/cart")}>
+              Cart
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => handleNavigation("/orders")}>
+              Orders
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => handleNavigation("/wishlist")}>
+              Wishlist
+            </Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item>Sign out</Dropdown.Item>
+            <Dropdown.Item onClick={() => handleNavigation("/sign-out")}>
+              Sign out
+            </Dropdown.Item>
           </Dropdown>
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse>
-          <Link to="/home">
-            <Navbar.Link active>Home</Navbar.Link>
-          </Link>
-          <Link to="/cart">
-            <Navbar.Link>
-              <IoCartOutline className="inline-block mr-2" size={24} />
-              Cart
-            </Navbar.Link>
-          </Link>
-          <Link to="/become-a-seller">
-            <Navbar.Link>
-              <FaRegHeart className="inline-block mr-2" size={20} />
-              Become a seller
-            </Navbar.Link>
-          </Link>
-          <Link to="/login">
-            <Navbar.Link href="/login">
-              <MdLogin className="inline-block mr-2" size={20} />
-              Login
-            </Navbar.Link>
-          </Link>
+          <Navbar.Link
+            active
+            onClick={() => handleNavigation("/home")}
+            className="cursor-pointer"
+          >
+            Home
+          </Navbar.Link>
+          <Navbar.Link
+            onClick={() => handleNavigation("/cart")}
+            className="cursor-pointer"
+          >
+            <IoCartOutline className="inline-block mr-2" size={24} />
+            Cart
+          </Navbar.Link>
+          <Navbar.Link
+            onClick={() => handleNavigation("/become-a-seller")}
+            className="cursor-pointer"
+          >
+            <FaRegHeart className="inline-block mr-2" size={20} />
+            Become a seller
+          </Navbar.Link>
+          <Navbar.Link
+            onClick={() => handleNavigation("/login")}
+            className="cursor-pointer"
+          >
+            <MdLogin className="inline-block mr-2" size={20} />
+            Login
+          </Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
     </>

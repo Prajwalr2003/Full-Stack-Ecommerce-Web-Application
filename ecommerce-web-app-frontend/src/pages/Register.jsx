@@ -5,8 +5,8 @@ import { FcGoogle } from "react-icons/fc";
 function Register() {
   return (
     <>
-      <div className="p-4 lg:pt-0 pt-16">
-        <form className="flex justify-center items-center lg:h-[100vh]">
+      <div className="p-4 py-20">
+        <form className="flex justify-center items-center min-h-screen">
           <div className="py-10 border-b border-black dark:border-white rounded-lg shadow w-[500px]">
             <div className="flex mb-6">
               <img
