@@ -14,12 +14,13 @@ const Order = () => {
       <h2 className="text-center pt-12 text-3xl text-gray-500 font-bold mb-8">
         Your Orders
       </h2>
-      {Array(1)
-        .fill(null)
-        .map((index) => {
-          return (
-            <div className="p-6 min-h-[70vh]">
-              <div className="flex flex-wrap justify-center gap-10 border p-5 mx-auto rounded-lg">
+
+      <div className="p-6 min-h-[70vh]">
+        {Array(4)
+          .fill(null)
+          .map((index) => {
+            return (
+              <div className="flex flex-wrap justify-center gap-10 border p-5 mx-auto rounded-lg mb-8 transition-transform duration-300 ease-in-out hover:scale-90">
                 <div className="flex flex-wrap justify-center lg:mb-6 p-6 border-b border-blue-400 shadow rounded-lg">
                   <div className="">
                     <img
@@ -30,9 +31,9 @@ const Order = () => {
                   </div>
                   <div className="ml-4 mt-4 lg:mt-0">
                     <p className="text-gray-600">VeBNoR</p>
-                    <h5 className="text-lg">
+                    <p className="text-lg">
                       VeBNoR Printed Men Polo Neck Navy Blue T-Shirt
-                    </h5>
+                    </p>
                     <div className="flex gap-3">
                       <p className="text-gray-600 ">Size: XXL</p>
                       <p className="text-gray-600">Size: Color</p>
@@ -54,9 +55,9 @@ const Order = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+      </div>
     </>
   );
 };
