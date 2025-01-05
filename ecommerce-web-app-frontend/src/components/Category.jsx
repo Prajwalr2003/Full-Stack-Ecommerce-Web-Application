@@ -12,7 +12,7 @@ function Category() {
     { categoryName: "Toys & Games" },
   ];
   return (
-    <div className="flex justify-center pt-16">
+    <div className="flex justify-center">
       <div className="overflow-x-auto whitespace-nowrap">
         <Button.Group className="m-4">
           <Button

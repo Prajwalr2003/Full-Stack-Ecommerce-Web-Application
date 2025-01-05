@@ -12,7 +12,7 @@ const ProfileTabBar = () => {
   };
   return (
     <>
-      <div className="pt-20">
+      <div className="pt-8">
         <Button.Group>
           <Button color="gray" onClick={() => handleNavigation("/profile")}>
             <MdManageAccounts size={30} />

@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 function Login() {
   return (
     <>
-      <div className="p-4 py-20">
+      <div className="p-4 pb-20 shadow">
         <form className="flex justify-center items-center min-h-screen">
-          <div className="py-10 border-b border-black dark:border-white rounded-lg w-[500px] shadow">
+          <div className="py-10 border-b border-black dark:border-white rounded-lg w-[500px]">
             <div className="flex mb-6">
               <img
                 src="../../temp/logo.png"

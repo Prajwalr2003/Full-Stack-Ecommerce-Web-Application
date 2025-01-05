@@ -8,6 +8,7 @@ import Cart from "../pages/Cart";
 import Profile from "../pages/Profile";
 import Order from "../pages/Order";
 import Wishlist from "../pages/Wishlist";
+import SellerRegistration from "../pages/SellerRegistration";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,13 @@ const router = createBrowserRouter([
       { path: "/profile", element: <Profile /> },
       { path: "/orders", element: <Order /> },
       { path: "/wishlist", element: <Wishlist /> },
+    ],
+  },
+  {
+    path: "/seller",
+    element: <App />,
+    children: [
+      { path: "/seller/registration", element: <SellerRegistration /> },
     ],
   },
 ]);

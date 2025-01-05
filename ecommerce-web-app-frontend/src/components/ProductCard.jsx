@@ -8,7 +8,7 @@ const ProductCard = () => {
   };
   return (
     <>
-      <div className="dark:bg-slate-900 flex flex-col justify-center items-center shadow-lg rounded-md w-72 h-[440px] transition-transform duration-200 border dark:border-0 hover:scale-110">
+      <div className="dark:bg-slate-900 flex flex-col justify-center items-center shadow-lg rounded-md w-72 h-[440px] transition-transform duration-200 border dark:border-0 hover:scale-105">
         <div className="overflow-hidden">
           <img
             alt="Apple Watch Series 7"

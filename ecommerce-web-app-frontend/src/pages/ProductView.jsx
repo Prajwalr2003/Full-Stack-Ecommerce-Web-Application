@@ -1,4 +1,4 @@
-import Review from "../components/Raview";
+import Review from "../components/Review";
 import BreadCrumb from "../components/BreadCrumb";
 import ProductCarousel from "../components/ProductCarousel";
 import ProductDetails from "../components/ProductDetails";

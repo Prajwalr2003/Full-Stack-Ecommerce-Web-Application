@@ -112,7 +112,7 @@ function Header() {
             Cart
           </Navbar.Link>
           <Navbar.Link
-            onClick={() => handleNavigation("/become-a-seller")}
+            onClick={() => handleNavigation("/seller/registration")}
             className="cursor-pointer"
           >
             <FaRegHeart className="inline-block mr-2" size={20} />

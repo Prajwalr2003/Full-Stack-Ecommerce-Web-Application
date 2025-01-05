@@ -6,7 +6,7 @@ const FilterDrawer = ({ isOpen, handleClose }) => {
   return (
     <>
       <div
-        className={`top-16 bottom-40 min-h-screen w-80 bg-gray-50 rounded-lg shadow-xl border-r dark:border-none z-40
+        className={`top-16 bottom-40 min-h-screen w-80 bg-gray-50 rounded-lg shadow-xl border-r overflow-y-auto z-40 dark:border-none
           dark:bg-slate-900 dark:text-white
           ${isOpen ? "fixed" : "hidden"}`}
       >
