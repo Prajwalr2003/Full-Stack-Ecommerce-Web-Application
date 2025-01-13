@@ -1,6 +1,6 @@
-import { Button, Label, Radio, TextInput } from "flowbite-react";
-import ProfileSidebar from "../components/ProfileSidebar";
-import ProfileTabBar from "../components/ProfileTabBar";
+import { Button, TextInput } from "flowbite-react";
+import ProfileTabBar from "../../components/customerComponents/ProfileTabBar";
+
 const Profile = () => {
   return (
     <>

@@ -1,5 +1,5 @@
-import CartCard from "../components/CartCard";
-import CartPriceCard from "../components/CartPriceCard";
+import CartCard from "../../components/customerComponents/CartCard";
+import CartPriceCard from "../../components/customerComponents/CartPriceCard";
 
 const Cart = () => {
   return (
@@ -9,10 +9,10 @@ const Cart = () => {
       </h2>
       <div className="min-h-[78vh]">
         <div className="flex flex-wrap justify-center items-center">
-          <p className="text-2xl mt-40 font-bold text-center">
+          {/* <p className="text-2xl mt-40 font-bold text-center">
             Sorry, Your cart is empty! Please add products
-          </p>
-          {/* <div className="flex flex-wrap justify-center gap-10 px-4">
+          </p> */}
+          <div className="flex flex-wrap justify-center gap-10 px-4">
             <div>
               {Array(1)
                 .fill(null)
@@ -21,7 +21,7 @@ const Cart = () => {
                 ))}
             </div>
             <CartPriceCard />
-          </div> */}
+          </div>
         </div>
       </div>
     </>

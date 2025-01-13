@@ -1,3 +1,4 @@
+import { Button } from "flowbite-react";
 import React from "react";
 
 function Card() {
@@ -33,12 +34,7 @@ function Card() {
       </div>
       {/* Button */}
       <div className="p-4 border-t border-gray-200">
-        <button
-          className="w-full bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-500 transition duration-300"
-          onClick={() => alert("View Details Clicked!")}
-        >
-          View Details
-        </button>
+        <Button>View Details</Button>
       </div>
     </div>
   );

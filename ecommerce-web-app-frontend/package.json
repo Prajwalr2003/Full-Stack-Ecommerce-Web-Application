@@ -12,6 +12,7 @@
   "dependencies": {
     "@fontsource/inter": "^5.1.0",
     "@fontsource/poppins": "^5.1.0",
+    "axios": "^1.7.9",
     "ecommerce-web-app": "file:",
     "ecommerce-web-app-frontend": "file:",
     "flowbite-react": "^0.10.2",

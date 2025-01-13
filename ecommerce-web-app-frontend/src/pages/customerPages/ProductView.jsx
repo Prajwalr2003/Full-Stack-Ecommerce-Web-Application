@@ -1,7 +1,7 @@
-import Review from "../components/Review";
-import BreadCrumb from "../components/BreadCrumb";
-import ProductCarousel from "../components/ProductCarousel";
-import ProductDetails from "../components/ProductDetails";
+import Review from "../../components/customerComponents/Review";
+import BreadCrumb from "../../components/customerComponents/BreadCrumb";
+import ProductCarousel from "../../components/customerComponents/ProductCarousel";
+import ProductDetails from "../../components/customerComponents/ProductDetails";
 
 function ProductView() {
   return (

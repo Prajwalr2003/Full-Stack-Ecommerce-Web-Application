@@ -4,7 +4,7 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 
 function FooterBar() {
   return (
-    <Footer container className="rounded-none">
+    <Footer container className="rounded-none dark:bg-slate-900">
       <div className="w-full">
         <div className="grid w-full justify-center sm:flex sm:justify-evenly md:flex md:grid-cols-1">
           <div>

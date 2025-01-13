@@ -1,7 +1,7 @@
 import { TextInput } from "flowbite-react";
-import Filters from "../components/Filters";
-import Category from "../components/Category";
-import ProductCard from "../components/ProductCard";
+import Filters from "../../components/customerComponents/Filters";
+import Category from "../../components/customerComponents/Category";
+import ProductCard from "../../components/customerComponents/ProductCard";
 
 function Home() {
   return (
@@ -18,14 +18,14 @@ function Home() {
       </div>
       <Filters />
       <div className="flex flex-wrap gap-4 justify-center py-8 min-h-[78vh]">
-        <p className="text-2xl mt-40 font-bold text-center">
+        {/* <p className="text-2xl mt-40 font-bold text-center">
           Sorry, No products are available for purchase !!!
-        </p>
-        {/* {Array(1)
+        </p> */}
+        {Array(3)
           .fill(null)
           .map((index) => {
             return <ProductCard></ProductCard>;
-          })} */}
+          })}
       </div>
     </>
   );

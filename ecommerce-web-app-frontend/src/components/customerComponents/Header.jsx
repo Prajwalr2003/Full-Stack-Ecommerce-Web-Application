@@ -4,8 +4,11 @@ import { IoCartOutline } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa";
 import { MdLogin, MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/Auth";
 
 function Header() {
+  const { isLoggedIn, user } = useAuth();
+
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
     return savedTheme !== "undefined" ? savedTheme : "light";
@@ -28,7 +31,7 @@ function Header() {
 
   return (
     <>
-      <Navbar className="fixed w-full top-0 left-0 z-50 p-4 shadow-lg">
+      <Navbar className="fixed w-full top-0 left-0 z-50 p-4 shadow-lg dark:bg-slate-900">
         <Navbar.Brand
           onClick={() => handleNavigation("/home")}
           className="cursor-pointer"
@@ -42,8 +45,8 @@ function Header() {
             E-COMMERCE
           </span>
         </Navbar.Brand>
-        <div className="flex md:order-2">
-          <div className="mt-2 mr-5 cursor-pointer">
+        <div className="flex justify-center items-center gap-5 md:order-2">
+          <div className="cursor-pointer">
             {/* Theme Toggle */}
             {theme === "light" ? (
               <MdDarkMode
@@ -59,41 +62,52 @@ function Header() {
               />
             )}
           </div>
-          <Dropdown
-            arrowIcon={false}
-            inline
-            label={
-              <Avatar
-                alt="User settings"
-                img="../../temp/profileimage.jpg"
-                rounded
-              />
-            }
-            className="cursor-pointer"
-          >
-            <Dropdown.Header>
-              <span className="block text-sm">Prajwal Rangari</span>
-              <span className="block truncate text-sm font-medium">
-                prajwalrangari@gmail.com
-              </span>
-            </Dropdown.Header>
-            <Dropdown.Item onClick={() => handleNavigation("/profile")}>
-              Profile
-            </Dropdown.Item>
-            <Dropdown.Item onClick={() => handleNavigation("/cart")}>
-              Cart
-            </Dropdown.Item>
-            <Dropdown.Item onClick={() => handleNavigation("/orders")}>
-              Orders
-            </Dropdown.Item>
-            <Dropdown.Item onClick={() => handleNavigation("/wishlist")}>
-              Wishlist
-            </Dropdown.Item>
-            <Dropdown.Divider />
-            <Dropdown.Item onClick={() => handleNavigation("/sign-out")}>
-              Sign out
-            </Dropdown.Item>
-          </Dropdown>
+          {isLoggedIn && (
+            <Dropdown
+              arrowIcon={false}
+              inline
+              label={
+                <Avatar
+                  alt="User settings"
+                  img="../../temp/profileimage.jpg"
+                  rounded
+                />
+              }
+              className="cursor-pointer"
+            >
+              <Dropdown.Header>
+                <span className="block text-sm">Prajwal Rangari</span>
+                <span className="block truncate text-sm font-medium">
+                  prajwalrangari@gmail.com
+                </span>
+              </Dropdown.Header>
+              <Dropdown.Item onClick={() => handleNavigation("/profile")}>
+                Profile
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => handleNavigation("/cart")}>
+                Cart
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => handleNavigation("/orders")}>
+                Orders
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => handleNavigation("/wishlist")}>
+                Wishlist
+              </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item onClick={() => handleNavigation("/sign-out")}>
+                Sign out
+              </Dropdown.Item>
+            </Dropdown>
+          )}
+          {!isLoggedIn && (
+            <a
+              onClick={() => handleNavigation("/login")}
+              className="cursor-pointer text-gray-700 font-semibold dark:text-white"
+            >
+              <MdLogin className="inline-block mr-2" size={20} />
+              Login
+            </a>
+          )}
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse>
@@ -117,13 +131,6 @@ function Header() {
           >
             <FaRegHeart className="inline-block mr-2" size={20} />
             Become a seller
-          </Navbar.Link>
-          <Navbar.Link
-            onClick={() => handleNavigation("/login")}
-            className="cursor-pointer"
-          >
-            <MdLogin className="inline-block mr-2" size={20} />
-            Login
           </Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
