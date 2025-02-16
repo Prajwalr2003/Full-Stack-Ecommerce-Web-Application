@@ -1,7 +1,10 @@
 import { Button } from "flowbite-react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const SellerProductCard = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="dark:bg-slate-900 flex flex-col justify-center items-center shadow-lg rounded-md w-72 h-[440px] transition-transform duration-200 border dark:border-0 hover:scale-105">
@@ -24,8 +27,10 @@ const SellerProductCard = () => {
           </span>
         </div>
         <div className="flex items-center gap-2 pt-4 justify-center">
-          <Button color="gray">View Details</Button>
-          <Button color="gray">Edit</Button>
+          <Button color="gray" onClick={() => navigate("/seller/product")}>
+            View
+          </Button>
+          <Button color="red">Delete</Button>
         </div>
       </div>
     </>

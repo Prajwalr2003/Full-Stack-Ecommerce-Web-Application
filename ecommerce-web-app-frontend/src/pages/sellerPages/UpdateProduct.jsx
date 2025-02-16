@@ -11,28 +11,16 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoMdAdd } from "react-icons/io";
 
-const AddProduct = () => {
-  const [images, setImages] = useState([]);
-
-  const handleFileUpload = (e) => {
-    setImages(e.target.files);
-  };
-
-  const addProductToInventory = (e) => {
-    e.preventDefault();
-  };
-
-  const handleAddRow = () => {};
+const UpdateProduct = () => {
   return (
     <>
       <div className="p-10">
         <form
           method="POST"
           className="flex flex-col justify-center items-center gap-4"
-          onSubmit={addProductToInventory}
         >
           <p className="text-2xl text-center font-bold uppercase dark:text-slate-300">
-            Add Product to E-COMMERCE
+            Update Product to E-COMMERCE
           </p>
 
           {/* Select Category  */}
@@ -122,7 +110,7 @@ const AddProduct = () => {
               <p className="text-red-500 text-lg">*</p>
             </div>
             <div className="flex justify-center items-center gap-4">
-              <div className="flex justify-center items-center gap-4">
+              <div className="">
                 <Select id="colors" required>
                   <option value="black">Black</option>
                   <option value="white">White</option>
@@ -137,13 +125,12 @@ const AddProduct = () => {
                   <option value="teal">Teal</option>
                   <option value="indigo">Indigo</option>
                 </Select>
-                <FileInput id="images" multiple onChange={handleFileUpload} />
               </div>
               <div>
-                <Button
-                  className="bg-sky-900 dark:bg-sky-900"
-                  onClick={handleAddRow}
-                >
+                <FileInput id="file" />
+              </div>
+              <div>
+                <Button className="bg-sky-900 dark:bg-sky-900">
                   <IoMdAdd />
                 </Button>
               </div>
@@ -222,7 +209,7 @@ const AddProduct = () => {
           </div>
 
           <Button type="submit" color="gray" className="min-w-[600px] my-8">
-            Add Product
+            Update Product
           </Button>
         </form>
       </div>
@@ -230,4 +217,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default UpdateProduct;

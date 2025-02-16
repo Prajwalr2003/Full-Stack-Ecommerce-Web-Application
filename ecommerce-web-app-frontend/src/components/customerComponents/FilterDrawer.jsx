@@ -51,6 +51,7 @@ const FilterDrawer = ({ isOpen, handleClose }) => {
                 required
                 shadow
                 className="w-28"
+                readOnly
               />
               <p>-</p>
               <TextInput
@@ -60,6 +61,7 @@ const FilterDrawer = ({ isOpen, handleClose }) => {
                 required
                 shadow
                 className="w-28"
+                readOnly
               />
             </div>
           </div>

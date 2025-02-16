@@ -2,8 +2,11 @@ import { TextInput } from "flowbite-react";
 import Filters from "../../components/customerComponents/Filters";
 import Category from "../../components/customerComponents/Category";
 import ProductCard from "../../components/customerComponents/ProductCard";
+import { useAuth } from "../../context/Auth";
 
 function Home() {
+  const { user, isLoggedIn } = useAuth();
+  console.log(user, isLoggedIn);
   return (
     <>
       <Category />
@@ -23,8 +26,8 @@ function Home() {
         </p> */}
         {Array(3)
           .fill(null)
-          .map((index) => {
-            return <ProductCard></ProductCard>;
+          .map((index, num) => {
+            return <ProductCard key={num} defaultValue></ProductCard>;
           })}
       </div>
     </>

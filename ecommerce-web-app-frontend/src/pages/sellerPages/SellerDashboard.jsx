@@ -5,8 +5,13 @@ import { FaHandHoldingHeart } from "react-icons/fa";
 import { Button, Table } from "flowbite-react";
 import { FaCarRear } from "react-icons/fa6";
 import { RxCounterClockwiseClock } from "react-icons/rx";
+import { useNavigate } from "react-router-dom";
 
 const SellerDashboard = () => {
+  const navigate = useNavigate();
+  const handleNavigation = (link) => {
+    navigate(link);
+  };
   return (
     <>
       {/* Analytics Cards  */}
@@ -40,8 +45,18 @@ const SellerDashboard = () => {
         </div>
       </div>
 
+      <div className="flex flex-wrap justify-center items-center min-h-[50vh] gap-5">
+        <p className="text-2xl font-bold">No Products Added Yet!</p>
+        <Button
+          color="gray"
+          onClick={() => handleNavigation("/seller/add-product")}
+        >
+          Add Products
+        </Button>
+      </div>
+
       {/* Recent Orders  */}
-      <div className="p-8">
+      {/* <div className="p-8">
         <div className="flex flex-col justify-center shadow-lg dark:border-none border p-5">
           <div className="flex gap-3 justify-start">
             <RxCounterClockwiseClock size={30} />
@@ -69,7 +84,12 @@ const SellerDashboard = () => {
                   <Table.Cell>25/12/2024</Table.Cell>
                   <Table.Cell>Processing</Table.Cell>
                   <Table.Cell>
-                    <Button color="gray">View</Button>
+                    <Button
+                      color="gray"
+                      onClick={() => handleNavigation("/seller/product")}
+                    >
+                      View
+                    </Button>
                   </Table.Cell>
                 </Table.Row>
                 <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -82,17 +102,22 @@ const SellerDashboard = () => {
                   <Table.Cell>03/01/2025</Table.Cell>
                   <Table.Cell>Out for Delivery</Table.Cell>
                   <Table.Cell>
-                    <Button color="gray">View</Button>
+                    <Button
+                      color="gray"
+                      onClick={() => handleNavigation("/seller/product")}
+                    >
+                      View
+                    </Button>
                   </Table.Cell>
                 </Table.Row>
               </Table.Body>
             </Table>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Your Products  */}
-      <div className="px-8 pb-8">
+      {/* <div className="px-8 pb-8">
         <div className="flex flex-col justify-center shadow-lg border dark:border-none p-5">
           <div className="flex gap-3 justify-start">
             <FaCarRear size={30} />
@@ -133,7 +158,7 @@ const SellerDashboard = () => {
             </Table>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

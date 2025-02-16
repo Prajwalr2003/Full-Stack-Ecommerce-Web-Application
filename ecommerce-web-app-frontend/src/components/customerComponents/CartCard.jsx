@@ -20,6 +20,7 @@ const CartCard = () => {
               required
               shadow
               className="w-16"
+              readOnly
             />
             <Button color="gray">+</Button>
           </div>

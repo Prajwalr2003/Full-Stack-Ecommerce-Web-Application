@@ -1,12 +1,58 @@
-import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+import { Button, Checkbox, Label, Spinner, TextInput } from "flowbite-react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/Auth";
+import { useRef, useState } from "react";
+import { useToast } from "../../context/ToastContext";
 
 function Login() {
+  let [isLoading, setIsLoading] = useState(false);
+  const { showToast } = useToast();
+  const navigate = useNavigate();
+  let { loginUser, isLoggedIn, setError, error } = useAuth();
+  let email = useRef(null);
+  let password = useRef(null);
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    setIsLoading(true);
+    let loginData = {
+      email: email.current.value,
+      password: password.current.value,
+    };
+    try {
+      const response = await loginUser(loginData);
+
+      // Check if response indicates success
+      if (response?.data?.success === true) {
+        showToast(response?.data?.message || "Login Successful", "success");
+        setIsLoading(false);
+        navigate("/home");
+      } else {
+        showToast(
+          response?.data?.message || "Invalid Email or Password",
+          "error"
+        );
+      }
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        showToast(error.response.data.message, "error");
+      } else {
+        showToast("An unexpected error occurred. Please try again.", "error");
+      }
+      setError("An unexpected error occurred. Please try again.", "error");
+      console.error("Login Failed", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
   return (
     <>
       <div className="p-4 pb-20 shadow">
-        <form className="flex justify-center items-center min-h-screen">
+        <form
+          className="flex justify-center items-center min-h-screen"
+          method="POST"
+          onSubmit={handleLogin}
+        >
           <div className="py-10 border-b border-black dark:border-white rounded-lg w-[500px]">
             <div className="flex mb-6">
               <img
@@ -27,6 +73,7 @@ function Login() {
                 id="email"
                 type="email"
                 placeholder="your@email.com"
+                ref={email}
                 required
                 shadow
               />
@@ -39,6 +86,7 @@ function Login() {
                 id="password"
                 placeholder="**************"
                 type="password"
+                ref={password}
                 required
                 shadow
               />
@@ -47,9 +95,17 @@ function Login() {
               <Checkbox id="remember" />
               <Label htmlFor="remember">Remember me</Label>
             </div>
-            <Button type="submit" className="mt-6 w-full">
-              Sign In
-            </Button>
+            <div className="mt-6">
+              {!isLoading ? (
+                <Button type="submit" className="w-full">
+                  Sign In
+                </Button>
+              ) : (
+                <Button type="submit" color="dark" className="w-full">
+                  <Spinner color="info" className="" />
+                </Button>
+              )}
+            </div>
             <Link to="#">
               <p className="text-center text-sm mt-5 ">Forgot your password?</p>
               <div className="border-b w-[170px] mx-auto mt-1"></div>

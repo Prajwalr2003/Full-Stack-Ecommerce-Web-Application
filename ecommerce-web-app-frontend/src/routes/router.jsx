@@ -26,6 +26,8 @@ import AdminDiscountOffers from "../pages/adminPages/AdminDiscountOffers";
 import AdminRatingsReviews from "../pages/adminPages/AdminRatingsReviews";
 import AdminAccountSettings from "../pages/adminPages/AdminAccountSettings";
 import AdminPaymentTransaction from "../pages/adminPages/AdminPaymentTransaction";
+import ViewProduct from "../pages/sellerPages/ViewProduct";
+import UpdateProduct from "../pages/sellerPages/UpdateProduct";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +56,8 @@ const router = createBrowserRouter([
       { path: "customer-management", element: <SellerCustomerManagement /> },
       { path: "account-settings", element: <SellerAccountManagement /> },
       { path: "add-product", element: <AddProduct /> },
+      { path: "product", element: <ViewProduct /> },
+      { path: "update/product", element: <UpdateProduct /> },
     ],
   },
   {

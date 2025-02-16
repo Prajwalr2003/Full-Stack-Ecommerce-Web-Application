@@ -8,7 +8,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 const SellerProductManagement = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
-  const handleAddProduct = (link) => {
+  const handleNavigate = (link) => {
     navigate(link);
   };
 
@@ -27,7 +27,7 @@ const SellerProductManagement = () => {
         </div>
         <div
           className="flex gap-6 justify-center items-center shadow-lg p-6 border cursor-pointer"
-          onClick={() => handleAddProduct("/seller/add-product")}
+          onClick={() => handleNavigate("/seller/add-product")}
         >
           <div>
             <IoMdAddCircle size={50} />
@@ -39,7 +39,7 @@ const SellerProductManagement = () => {
       </div>
 
       {/* Search Input  */}
-      <div className="pt-8">
+      {/* <div className="pt-8">
         <TextInput
           id="search"
           type="search"
@@ -47,10 +47,20 @@ const SellerProductManagement = () => {
           shadow
           className="w-[90%] mx-auto"
         />
+      </div> */}
+
+      <div className="flex flex-wrap justify-center items-center min-h-[50vh] gap-5">
+        <p className="text-2xl font-bold">No Products Added Yet!</p>
+        <Button
+          color="gray"
+          onClick={() => handleNavigate("/seller/add-product")}
+        >
+          Add Products
+        </Button>
       </div>
 
       {/* All Products  */}
-      <div className="p-8">
+      {/* <div className="p-8">
         <div className="flex flex-col justify-center shadow-lg border dark:border-none p-5">
           <div className="flex gap-3 justify-start">
             <MdLocalMall size={30} />
@@ -78,7 +88,12 @@ const SellerProductManagement = () => {
                   <Table.Cell>$500</Table.Cell>
                   <Table.Cell>100</Table.Cell>
                   <Table.Cell>
-                    <Button color="gray">Update</Button>
+                    <Button
+                      color="gray"
+                      onClick={() => handleNavigate("/seller/update/product")}
+                    >
+                      Update
+                    </Button>
                   </Table.Cell>
                 </Table.Row>
                 <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -91,7 +106,12 @@ const SellerProductManagement = () => {
                   <Table.Cell>$50</Table.Cell>
                   <Table.Cell>300</Table.Cell>
                   <Table.Cell>
-                    <Button color="gray">Update</Button>
+                    <Button
+                      color="gray"
+                      onClick={() => handleNavigate("/seller/update/product")}
+                    >
+                      Update
+                    </Button>
                   </Table.Cell>
                 </Table.Row>
               </Table.Body>
@@ -102,7 +122,7 @@ const SellerProductManagement = () => {
 
       <div className="flex overflow-x-auto sm:justify-center">
         <Pagination currentPage={currentPage} totalPages={10} />
-      </div>
+      </div> */}
     </>
   );
 };

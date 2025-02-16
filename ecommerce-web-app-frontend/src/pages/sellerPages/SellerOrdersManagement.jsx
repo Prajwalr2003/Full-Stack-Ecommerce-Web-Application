@@ -146,7 +146,10 @@ const SellerOrdersManagement = () => {
       </div>
 
       {/* All Orders  */}
-      <div className="p-8">
+      <div className="flex flex-wrap justify-center items-center min-h-32 gap-5">
+        <p className="text-2xl font-bold">No Orders Made Yet!</p>
+      </div>
+      {/* <div className="p-8">
         <div className="flex flex-col justify-center shadow-lg dark:border-none border p-5">
           <div className="flex gap-3 justify-start">
             <FcShipped size={30} />
@@ -194,7 +197,7 @@ const SellerOrdersManagement = () => {
             </Table>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

@@ -1,5 +1,7 @@
 import React, { useContext, createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { use } from "react";
 
 const Auth = createContext();
 
@@ -8,6 +10,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const [token, setToken] = useState(null);
+  const [refreshToken, setRefreshToken] = useState(null);
 
   const navigate = useNavigate();
 
@@ -30,23 +33,25 @@ export const AuthProvider = ({ children }) => {
   const loginUser = async (loginData) => {
     try {
       const res = await axios.post(
-        "http://127.0.0.1:8000/api/v1/users/login",
+        "http://127.0.0.1:3000/api/v1/user/login",
         loginData,
         {
+          withCredentials: true,
           headers: {
             "Content-Type": "application/json",
           },
         }
       );
 
-      if (res.data.success == true) {
+      if (res.status === 200) {
         setIsLoggedIn(true);
         setUser(res.data.user);
-        setToken(res.data.token);
-
+        setToken(res.data.accessToken);
+        setRefreshToken(res.data.refreshToken);
         localStorage.setItem("isLoggedIn", true);
         localStorage.setItem("user", JSON.stringify(res.data.user));
-        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("accessToken", res.data.accessToken);
+        localStorage.setItem("refreshToken", res.data.refreshToken);
         navigate("/home");
       } else {
         setError(res.data.message || "Login failed.");
@@ -54,7 +59,10 @@ export const AuthProvider = ({ children }) => {
 
       return res;
     } catch (error) {
-      console.log("Login Failed", error);
+      setError(
+        error.response?.data?.message || "Login failed. Please try again."
+      );
+      console.error("Login Failed", error);
     }
   };
 
@@ -62,8 +70,11 @@ export const AuthProvider = ({ children }) => {
     setIsLoggedIn(false);
     setUser(null);
     setToken(null);
+    setRefreshToken(null);
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("user");
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
     navigate("/login");
   };
 
@@ -77,17 +88,18 @@ export const AuthProvider = ({ children }) => {
       const res = await axios({ ...options, url, headers });
       return res;
     } catch (err) {
-      if (error.response?.status === 401) {
+      if (err.response?.status === 401) {
         logoutUser();
+        navigate("/login");
       }
-      throw error;
+      throw err;
     }
   };
 
   return (
     <Auth.Provider
-      value={
-        (isLoggedIn,
+      value={{
+        isLoggedIn,
         user,
         loginUser,
         logoutUser,
@@ -95,8 +107,8 @@ export const AuthProvider = ({ children }) => {
         getAuthHeaders,
         authenticatedRequest,
         error,
-        setError)
-      }
+        setError,
+      }}
     >
       {children}
     </Auth.Provider>

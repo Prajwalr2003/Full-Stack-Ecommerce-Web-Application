@@ -25,7 +25,9 @@ const ProductDetails = () => {
         <Button color="failure">Red</Button>
         <Button color="blue">Blue</Button>
         <Button color="success">Green</Button>
-        <Button color="light">White</Button>
+        <Button color="light" className="dark:bg-white dark:text-black">
+          White
+        </Button>
         <Button color="dark">Black</Button>
         <Button color="warning">Yellow</Button>
         <Button gradientMonochrome="pink">Pink</Button>
