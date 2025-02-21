@@ -10,12 +10,18 @@ app.use(
   })
 );
 
-app.use(express.json({ limit: "16kb" }));
-app.use(express.urlencoded({ extended: true, limit: "16kb" }));
+app.use(express.json({ limit: "2mb" }));
+app.use(express.urlencoded({ extended: true, limit: "2mb" }));
 app.use(express.static("public"));
 app.use(cookieParse());
 
 const userRouter = require('./routes/user.route');
-app.use("/api/v1/users", userRouter);
+app.use("/api/v1/user", userRouter);
+
+const productRouter = require('./routes/product.route');
+app.use("/api/v1/product", productRouter);
+
+const categoryRouter = require('./routes/category.route');
+app.use("/api/v1/category", categoryRouter);
 
 module.exports = app;

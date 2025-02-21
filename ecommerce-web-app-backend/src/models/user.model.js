@@ -6,39 +6,18 @@ const { Schema } = mongoose;
 // User Schema
 const userSchema = new Schema(
   {
-    firstName: {
+    fullname: {
       type: String,
       required: true,
-      lowercase: true,
       trim: true,
-      minlength: [3, 'Firstname name must be at least 5 characters'],
-      maxlength: [20, 'Firstname name cannot exceed 20 characters'],
-      index: true
-    },
-    lastName: {
-      type: String,
-      required: true,
-      lowercase: true,
-      trim: true,
-      minlength: [3, 'Fullname name must be at least 3 characters'],
-      maxlength: [20, 'Fullname name cannot exceed 20 characters'],
+      minlength: [6, 'Firstname name must be at least 5 characters'],
+      maxlength: [50, 'Firstname name cannot exceed 20 characters'],
       index: true
     },
     gender: {
       type: String, 
       lowercase: true,
-      enum: ["male", "female", "others"],
-      default: "male"
-    },
-    username: {
-      type: String,
-      required: true,
-      lowercase: true,
-      unique: true,
-      trim: true,
-      minlength: [3, 'Username must be at least 3 characters'],
-      maxlength: [30, 'Username cannot exceed 30 characters'],
-      index: true
+      enum: ["male", "female", "others"]
     },
     password: {
       type: String,
@@ -59,14 +38,12 @@ const userSchema = new Schema(
     },
     phone: {
       type: String,
-      required: true,
       unique: true,
       trim: true,
       match: [
         /^\d{10}$/,
         'Phone number must be a valid 10-digit number'
       ],
-      index: true
     },
     userImage: {
       type: String
@@ -97,10 +74,11 @@ userSchema.methods.generateAccessToken = function(){
     {
       _id : this._id,
       email: this.email,
-      username: this.username,
-      firstName: this.firstName,
-      lastName: this.lastName,
-      userRole: this.userRole
+      fullname: this.fullname,
+      userRole: this.userRole,
+      userImage: this.userImage,
+      gender: this.gender,
+      phone: this.phone
     },
     process.env.ACCESS_TOKEN_SECRET,
     {

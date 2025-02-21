@@ -48,7 +48,12 @@ const productSchema = new Schema(
       slugPaddingSize: 4,
       index: true,
       required: true
-    }
+    },
+    images: [{
+      imageUrl: { type: String, required: true },
+      altText: String,
+      order: Number
+    }]
   },
   {
     timestamps: true
